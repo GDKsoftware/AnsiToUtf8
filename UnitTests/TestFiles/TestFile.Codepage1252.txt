@@ -1,0 +1,6 @@
+This is an ANSI file in codepage 1252.
+
+Euro sign: €
+Guilder sign: ƒ	„	…	†	‡	ˆ	‰	Š	‹	Œ	 	Ž	 
+9–	 	‘	’	“	”	•	–	—	~	™	š	›	œ	 	ž	Ÿ
+

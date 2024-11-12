@@ -1,0 +1,3 @@
+This file is in codepage Windows-1250 for Central European characters.
+
+Jedná se o text pro testování programu a softwarové služby. Nebo jiný výraz pro aplikaèní...

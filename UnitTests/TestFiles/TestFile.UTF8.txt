@@ -1,0 +1,4 @@
+﻿And this file contains different characters, but is already UTF-8.
+
+Jedná se o text pro testování programu a softwarové služby. Nebo jiný výraz pro aplikační...
+This sentence above should be the same in TestFile.Codepage1250.
