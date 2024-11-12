@@ -1,3 +1,4 @@
+
 # ANSI to UTF-8 file converter
 Command line utility to convert ANSI encoded files to UTF-8.
 
@@ -6,7 +7,6 @@ Not required. Just download AnsiToUtf8.exe command line utility to your computer
 
 ## Usage
 `AnsiToUtf8 <filename or folder> [codepage]`
-
-Options:
-  -cp <codepage>: Define an ANSI codepage for the file (default 1251).
-  -subdirs: Include subdirectories when converting a folder.
+### Options
+ - -cp <codepage>: Define an ANSI codepage for the file (default 1251).
+ - -subdirs: Include subdirectories when converting a folder.
