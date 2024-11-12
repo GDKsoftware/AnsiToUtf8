@@ -25,6 +25,7 @@ begin
       Writeln('Options:');
       Writeln('  -cp <codepage>: Define an ANSI codepage for the file (default 1251).');
       Writeln('  -subdirs: Include subdirectories when converting a folder.');
+      Writeln('  -pattern: Search pattern for files (default *.pas).');
       Exit;
     end;
 
@@ -46,12 +47,18 @@ begin
       IsDirectory := True;
 
     var SearchOption := TSearchOption.soTopDirectoryOnly;
-    if FindCmdLineSwitch('subdirs', CodePageParam) then
+    if FindCmdLineSwitch('subdirs') then
       SearchOption := TSearchOption.soAllDirectories;
+
+    var SearchPattern := '*.pas';
+
+    var PatternParam: string;
+    if FindCmdLineSwitch('pattern', PatternParam) then
+      SearchPattern := PatternParam;
 
     var Files: TArray<string> := [];
     if IsDirectory then
-      Files := TDirectory.GetFiles(FileParam, '*.pas', SearchOption)
+      Files := TDirectory.GetFiles(FileParam, SearchPattern, SearchOption)
     else
       Files := [FileParam];
 
