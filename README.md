@@ -14,6 +14,6 @@ Not required. Just download AnsiToUtf8.exe command line utility to your computer
 ## Usage
 `AnsiToUtf8 <filename or folder> <options>`
 ### Options
- - -cp <codepage>: Define an ANSI codepage for the file (default 1251).
- - -subdirs: Include subdirectories when converting a folder.
- - -pattern: Search pattern for files (default *.pas).
+ - `-cp` <codepage>: Define an ANSI codepage for the file (default 1251).
+ - `-subdirs`: Include subdirectories when converting a folder.
+ - `-pattern`: Search pattern for files (default *.pas).
