@@ -12,7 +12,7 @@ Conversion can be done for files and folders, optionally including subfolders.
 Not required. Just download AnsiToUtf8.exe command line utility to your computer. Win32 and Win64 versions are available in the Bin directory.
 
 ## Usage
-`AnsiToUtf8 <filename or folder> [codepage]`
+`AnsiToUtf8 <filename or folder> <options>`
 ### Options
  - -cp <codepage>: Define an ANSI codepage for the file (default 1251).
  - -subdirs: Include subdirectories when converting a folder.
