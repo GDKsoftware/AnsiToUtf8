@@ -36,7 +36,9 @@ begin
     if FindCmdLineSwitch('cp', CodePageParam) then
       CodePage := StrToInt(CodePageParam);
 
-    Writeln(Format('Started ANSI (codepage %d) to UTF-8 conversion', [CodePage]));
+    var TargetEncoding := TEncodingTarget.UTF8;
+
+    Writeln(Format('Started ANSI (codepage %d) to %s conversion', [CodePage, TargetEncoding.Name]));
 
     var Processor: IConversionProcessor := TConversionProcessor.Create;
     Processor
@@ -66,6 +68,7 @@ begin
     begin
       try
         Processor
+          .UseTargetEncoding(TargetEncoding)
           .Convert(FileName, CodePage,
             procedure(ProgressMsg: string)
             begin

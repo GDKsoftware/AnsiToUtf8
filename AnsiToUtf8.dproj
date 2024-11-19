@@ -3,7 +3,7 @@
         <ProjectGuid>{0B7D24CD-6C5F-465C-B082-E30A0DB955A2}</ProjectGuid>
         <MainSource>AnsiToUtf8.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <ProjectName Condition="'$(ProjectName)'==''">AnsiToUtf8</ProjectName>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Console</AppType>

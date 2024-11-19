@@ -17,7 +17,7 @@ type
     procedure AfterConstruction; override;
 
     function UseTargetEncoding(const Encoding: TEncodingTarget): IConversionProcessor;
-    procedure Convert(const FileName: string; const CodePage: Integer; const Progress: TProc<string>);
+    function Convert(const FileName: string; const CodePage: Integer; const Progress: TProc<string>): TConversionResult;
   end;
 
   TConversionHelper = class
@@ -45,13 +45,14 @@ begin
   FTargetEncoding := TEncodingTarget.UTF8;
 end;
 
-procedure TConversionProcessor.Convert(const FileName: string; const CodePage: Integer; const Progress: TProc<string>);
+function TConversionProcessor.Convert(const FileName: string; const CodePage: Integer; const Progress: TProc<string>): TConversionResult;
 begin
   var FileEncoding := TConversionHelper.DetectEncoding(FileName);
   var IsUnicode := (FileEncoding <> TFileEncoding.ANSI);
 
   if IsUnicode then
   begin
+    Result := TConversionResult.AlreadyConverted;
     Progress(Format('"%s": File is already in Unicode', [FileName]));
     Exit;
   end;
@@ -70,6 +71,8 @@ begin
   TFile.Move(FileName, BackupFileName);
 
   SaveStringToFile(FileContent, FileName);
+
+  Result := TConversionResult.Converted;
 end;
 
 function TConversionProcessor.LoadStringFromFile(const FileName: string): RawByteString;
@@ -90,10 +93,11 @@ begin
   if FileContent = '' then
     Exit;
 
-  var ContentWithBOM := RawByteString(FTargetEncoding.BOM) + FileContent;
+  var ContentWithBOM: RawByteString := FTargetEncoding.BOM + FileContent;
   var fs := TFileStream.Create(FileName, fmCreate);
   try
-    fs.Write(ContentWithBOM[1], Length(ContentWithBOM));
+    var DataSize := Length(ContentWithBOM);
+    fs.Write(ContentWithBOM[1], DataSize);
   finally
     fs.Free;
   end;
